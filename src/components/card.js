@@ -1,30 +1,17 @@
-// {
-//     "name": "Symphony",
-//     "artist": "Naoki",
-//     "url": "https://www.last.fm/music/Naoki/_/Symphony",
-//     "streamable": "0",
-//     "listeners": "29430",
-//     "image": [
-//         {
-//             "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
-//             "size": "small"
-//         },
-//         {
-//             "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
-//             "size": "medium"
-//         },
-//         {
-//             "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
-//             "size": "large"
-//         },
-//         {
-//             "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
-//             "size": "extralarge"
-//         }
-//     ],
-//     "mbid": ""
-// }
 export function renderCard(data) {
+  const cardsContainer = document.querySelector(".music-grid");
+  if (!cardsContainer) return;
+  if (!data || data.length === 0) {
+    cardsContainer.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">🔍</div>
+        <h2>Oops! No results found.</h2>
+        <p>Please try searching for another track or artist.</p>
+        <button onclick="window.location.href='index.html'" class="btn-back">Back to Home</button>
+      </div>
+    `;
+    return;
+  }
   const cardsHtml = data
     .map((item) => {
       // get image url
@@ -62,7 +49,7 @@ export function renderCard(data) {
 </div>`;
     })
     .join("");
-  const cardsContainer = document.querySelector(".music-grid");
+
   if (cardsContainer) {
     cardsContainer.innerHTML = cardsHtml;
   }
