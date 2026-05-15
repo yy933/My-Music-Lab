@@ -1,13 +1,40 @@
+// {
+//     "name": "Symphony",
+//     "artist": "Naoki",
+//     "url": "https://www.last.fm/music/Naoki/_/Symphony",
+//     "streamable": "0",
+//     "listeners": "29430",
+//     "image": [
+//         {
+//             "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+//             "size": "small"
+//         },
+//         {
+//             "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+//             "size": "medium"
+//         },
+//         {
+//             "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+//             "size": "large"
+//         },
+//         {
+//             "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+//             "size": "extralarge"
+//         }
+//     ],
+//     "mbid": ""
+// }
 export function renderCard(data) {
   const cardsHtml = data
     .map((item) => {
       // get image url
-      const rawImg = item.image[2]["#text"];
+      const rawImg = item?.image[2]?.["#text"];
       const isDefault = rawImg.includes("2a96cbd8b46e442fc41c2b86b821562f");
       const imageUrl = isDefault
         ? `https://placehold.co/600x400/A0522D/white/?text=${encodeURIComponent(item.name)}&font=Oswald`
         : rawImg;
-
+      const artistName = item.artist?.name || "Unknown Artist";
+      const artistUrl = item.artist?.url || "#";
       return `
     <div class="music-card">
   <img
@@ -20,13 +47,13 @@ export function renderCard(data) {
     <a href=${item.url} target="_blank">
       <h3 class="track-name">${item.name}</h3>
     </a>
-    <a href=${item.artist.url} target="_blank">
-      <span class="artist-name">${item.artist.name}</span>
+    <a href="${artistUrl}" target="_blank">
+      <span class="artist-name">${artistName}</span>
     </a>
   </div>
 
   <div class="card-action">
-    <button class="btn-fav" data-name="${item.name}" data-artist="${item.artist.name}">
+    <button class="btn-fav" data-name="${item.name}" data-artist="${artistName}">
       <svg class="icon-heart" viewBox="0 0 24 24">
         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
       </svg>

@@ -16,4 +16,10 @@ export function renderNavbar() {
           />
         </div>
       </div>`;
+  const searchInput = document.getElementById("searchInput");
+  searchInput?.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      window.location.href = `/search.html?q=${searchInput.value}`;
+    }
+  });
 }
