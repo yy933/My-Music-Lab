@@ -1,16 +1,17 @@
 import "./styles/style.css";
 import { renderNavbar } from "./components/navbar.js";
+import { renderNavBtns } from "./components/navigation-btns.js";
 import { renderHome } from "./pages/renderHome.js";
 import { renderSearch } from "./pages/renderSearch.js";
-import { renderCollections } from './pages/renderCollections.js';
+import { renderCollections } from "./pages/renderCollections.js";
 import { storage } from "./utils/storage.js";
 
 const trackList = document.querySelector(".music-grid");
 
 renderNavbar();
+renderNavBtns();
 // execute page-specific logic
 const path = window.location.pathname;
-
 
 if (path.includes("search.")) {
   renderSearch();
@@ -42,6 +43,6 @@ trackList.addEventListener("click", (e) => {
     favBtn.classList.remove("active");
   } else {
     storage.add(trackData);
-    favBtn.classList.add("active"); 
+    favBtn.classList.add("active");
   }
 });
