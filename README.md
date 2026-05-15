@@ -2,6 +2,8 @@
 
 A modern, responsive music discovery web application built with vanilla JavaScript and the [Last.fm API](https://www.last.fm/api). This project allows users to explore top tracks, search for their favorite artists, and manage a personal collection using local storage.
 
+> **See live demo here**: https://mymusiclab.netlify.app/
+
 ## Features
 
 - **Top Charts**: Displays the current top tracks globally on the landing page.
