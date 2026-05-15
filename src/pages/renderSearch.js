@@ -12,7 +12,6 @@ export async function renderSearch() {
   const container = document.querySelector(".music-grid");
   if (container) container.innerHTML = "<p>Searching...</p>";
 
-
   try {
     // call API
     const results = await searchTracks(query);
@@ -26,5 +25,6 @@ export async function renderSearch() {
         <p>Something went wrong with the music lab. Please try again later.</p>
       </div>
     `;
+    console.error("API call error: ", error);
   }
 }

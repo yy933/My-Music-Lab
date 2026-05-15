@@ -22,7 +22,7 @@ export const storage = {
     }
   },
 
-  // remove track from collections 
+  // remove track from collections
   remove(trackName, artistName) {
     // get the original list
     const list = this.get();

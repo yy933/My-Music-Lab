@@ -25,7 +25,7 @@ export function renderCard(data) {
       const artistName = item.artist?.name || "Unknown Artist";
       const artistUrl = item.artist?.url || "#";
       const isFav = storage.isFavorite(item.name, artistName);
-      
+
       return `
     <div class="music-card">
   <img

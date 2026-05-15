@@ -24,7 +24,7 @@ export async function searchTracks(query, limit = 20) {
     );
     const data = await res.json();
     const cleanData = data.results.trackmatches.track.map((track) => {
-      const artistName = track.artist; 
+      const artistName = track.artist;
       const formattedName = encodeURIComponent(artistName).replace(/%20/g, "+");
       return {
         ...track,
