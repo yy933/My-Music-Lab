@@ -2,6 +2,7 @@ import "./styles/style.css";
 import { renderNavbar } from "./components/navbar.js";
 import { renderHome } from "./pages/renderHome.js";
 import { renderSearch } from "./pages/renderSearch.js";
+import { renderCollections } from './pages/renderCollections.js';
 import { storage } from "./utils/storage.js";
 
 const trackList = document.querySelector(".music-grid");
@@ -10,9 +11,10 @@ renderNavbar();
 // execute page-specific logic
 const path = window.location.pathname;
 
-if (path.includes("search.html")) {
+
+if (path.includes("search.")) {
   renderSearch();
-} else if (path.includes("collections.html")) {
+} else if (path.includes("collections")) {
   renderCollections();
 } else {
   // default: home page

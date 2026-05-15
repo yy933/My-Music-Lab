@@ -9,7 +9,7 @@ export async function getTopTracks(count = 10) {
     if (!res.ok) throw new Error("API request failed.");
     const data = await res.json();
     const topTracks = data.tracks.track.slice(0, count);
-    console.log(topTracks);
+
     return topTracks;
   } catch (error) {
     console.error(error);
