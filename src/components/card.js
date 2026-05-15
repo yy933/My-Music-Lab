@@ -1,6 +1,8 @@
+import { storage } from "../utils/storage.js";
 export function renderCard(data) {
   const cardsContainer = document.querySelector(".music-grid");
   if (!cardsContainer) return;
+  // if no data, show empty state
   if (!data || data.length === 0) {
     cardsContainer.innerHTML = `
       <div class="empty-state">
@@ -22,6 +24,8 @@ export function renderCard(data) {
         : rawImg;
       const artistName = item.artist?.name || "Unknown Artist";
       const artistUrl = item.artist?.url || "#";
+      const isFav = storage.isFavorite(item.name, artistName);
+      
       return `
     <div class="music-card">
   <img
@@ -40,7 +44,11 @@ export function renderCard(data) {
   </div>
 
   <div class="card-action">
-    <button class="btn-fav" data-name="${item.name}" data-artist="${artistName}">
+    <button class="btn-fav ${isFav ? "active" : ""}" 
+    data-name="${item.name}" 
+    data-artist="${artistName}"
+    data-image="${imageUrl}"
+    data-url="${item.url}">
       <svg class="icon-heart" viewBox="0 0 24 24">
         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
       </svg>
