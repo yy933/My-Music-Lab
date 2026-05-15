@@ -30,7 +30,7 @@ export function renderCard(data) {
     <div class="music-card">
   <img
     src="${imageUrl}"
-    alt="${item.name}"
+    alt="Album cover for${item.name}"
     class="card-img"
   />
 
@@ -44,7 +44,9 @@ export function renderCard(data) {
   </div>
 
   <div class="card-action">
-    <button class="btn-fav ${isFav ? "active" : ""}" 
+    <button class="btn-fav ${isFav ? "active" : ""}"
+    aria-label="${isFav ? "Remove from favorites" : "Add to favorites"}"
+    aria-pressed="${isFav}" 
     data-name="${item.name}" 
     data-artist="${artistName}"
     data-image="${imageUrl}"

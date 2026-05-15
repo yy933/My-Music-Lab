@@ -3,12 +3,13 @@ export function renderNavbar() {
   <img
         class="header-img"
         src="/images/header image.jpg"
-        alt="header image"
+        alt=""
       />
 
       <div class="header-content">
         <h1>My Music Lab</h1>
         <div class="search-container">
+          <label for="searchInput" class="sr-only">Search for music tracks or artists</label>
           <input
             type="text"
             id="searchInput"

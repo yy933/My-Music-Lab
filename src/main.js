@@ -1,6 +1,6 @@
 import "./styles/style.css";
 import { renderNavbar } from "./components/navbar.js";
-import { renderNavBtns } from "./components/navigation-btns.js";
+import { renderNavBtns } from "./components/navBtns.js";
 import { renderHome } from "./pages/renderHome.js";
 import { renderSearch } from "./pages/renderSearch.js";
 import { renderCollections } from "./pages/renderCollections.js";
@@ -13,7 +13,7 @@ renderNavBtns();
 // execute page-specific logic
 const path = window.location.pathname;
 
-if (path.includes("search.")) {
+if (path.includes("search")) {
   renderSearch();
 } else if (path.includes("collections")) {
   renderCollections();
@@ -22,7 +22,7 @@ if (path.includes("search.")) {
   renderHome();
 }
 
-// listen for tracklist
+// listen for tracklist and fav btn clicks
 trackList.addEventListener("click", (e) => {
   const favBtn = e.target.closest(".btn-fav");
   if (!favBtn) return;
